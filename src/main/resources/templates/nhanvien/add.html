@@ -13,31 +13,27 @@
     <div class="col-6 mb-3">
       <label class="form-label" for="Ma_NV">Mã Nhân Viên</label>
       <input class="form-control" type="text" th:field="*{Ma_NV}" id="Ma_NV">
-
     </div>
-
     <div class="col-6 mb-3">
       <label class="form-label" for="Ten_NV">Tên Nhân Viên</label>
       <input class="form-control" type="text" th:field="*{Ten_NV}" id="Ten_NV">
-
     </div>
     <div class="col-6 mb-3">
       <label class="form-label" for="Phai">Giới tính</label>
       <input class="form-control" type="text" th:field="*{Phai}" id="Phai">
-
+      <img th:if="${nhanvien.Phai == 'Nam'}" src="/static/images/man.jpg" alt="Nam" />
+      <img th:if="${nhanvien.Phai == 'Nữ'}" src="/static/images/woman.jpg" alt="Nữ" />
     </div>
     <div class="col-6 mb-3">
       <label class="form-label" for="Noi_Sinh">Nơi sinh</label>
       <input class="form-control" type="text" th:field="*{Noi_Sinh}" id="Noi_Sinh">
-
     </div>
     <div class="col-6 mb-3">
       <label class="form-label" for="PhongBan">Phòng Ban</label>
       <select class="form-control" id="PhongBan" name="PhongBan.Ma_Phong">
-        <option value="">-- Danh sách Phòng Ban --</option>
+        <option value="">Danh sách Phòng Ban</option>
         <option th:each="PhongBan: ${PhongBans}" th:value="${PhongBan.Ma_Phong}" th:text="${PhongBan.Ten_Phong}"></option>
       </select>
-
     </div>
     <div class="col-6 mb-3">
       <label class="form-label" for="Luong">Lương </label>

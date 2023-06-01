@@ -11,19 +11,19 @@ import java.util.List;
 public class NhanVienService {
     @Autowired
     private INhanVienRepository nhanVienRepository;
-    public List<NhanVien> getAllNhanVien(){
+    public List<NhanVien> getAllStaff(){
         return nhanVienRepository.findAll();
     }
-    public NhanVien getNhanVienId(String Ma_NV){
+    public NhanVien getStaffId(String Ma_NV){
         return nhanVienRepository.findById(Ma_NV).orElse(null);
     }
-    public void addNhanVien(NhanVien nhanVien){
+    public void addStaff(NhanVien nhanVien){
         nhanVienRepository.save(nhanVien);
     }
-    public void deleteNhanVien(String Ma_NV){
+    public void deleteStaff(String Ma_NV){
         nhanVienRepository.deleteById(Ma_NV);
     }
-    public void updateNhanVien(NhanVien nhanVien){
+    public void updateStaff(NhanVien nhanVien){
         nhanVienRepository.save(nhanVien);
     }
 

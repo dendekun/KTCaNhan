@@ -4,34 +4,85 @@
   <meta charset="UTF-8">
   <title>Danh Sách Nhân Viên</title>
   <th:block th:replace="layout::link-css"></th:block>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .table-container {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      width: 80%;
+      max-width: 800px;
+    }
+
+    .table-container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table th, .table td {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+
+    .table td {
+      text-align: center;
+    }
+
+    .table td a {
+      margin-right: 10px;
+    }
+  </style>
 </head>
 <body>
 <th:block th:replace="layout::header"></th:block>
 <div class="container">
-  <h1 th:text=${title}></h1>
-  <table class="table">
-    <tr>
-      <th>Mã Nhân Viên</th>
-      <th>Tên Nhân Viên</th>
-      <th>Giới tính</th>
-      <th>Nơi sinh</th>
-      <th>Tên phòng</th>
-      <th>Lương</th>
-      <th>Action</th>
-    </tr>
-    <tr th:each="nhanvien: ${nhanviens}">
-      <td th:text="${nhanvien.Ma_NV}"></td>
-      <td th:text="${nhanvien.Ten_NV}"></td>
-      <td th:text="${nhanvien.Phai}"></td>
-      <td th:text="${nhanvien.Noi_Sinh}"></td>
-      <td th:text="${nhanvien.PhongBan.Ten_Phong}"></td>
-      <td th:text="${nhanvien.Luong}"></td>
-      <td>
-        <a th:href="@{/nhanviens/edit/{id}(id=${nhanvien.ma_NV})}">Edit</a>
-        <a th:href="@{/nhanviens/delete/{id}(id=${nhanvien.Ma_NV})}" onclick="return confirm('Are you sure about that?')">Delete</a>
-      </td>
-    </tr>
-  </table>
+  <div class="table-container">
+    <h1 th:text="${title}"></h1>
+    <table class="table">
+      <tr>
+        <th>Mã Nhân Viên</th>
+        <th>Tên Nhân Viên</th>
+        <th>Giới tính</th>
+        <th>Nơi sinh</th>
+        <th>Tên phòng</th>
+        <th>Lương</th>
+        <th>Action</th>
+      </tr>
+      <tr th:each="nhanvien: ${nhanviens}">
+        <td th:text="${nhanvien.Ma_NV}"></td>
+        <td th:text="${nhanvien.Ten_NV}"></td>
+        <td>
+          <img th:if="${nhanvien.Phai == 'Nữ'}" src="/images/woman.jpg"  width="60" height="60" />
+          <img th:if="${nhanvien.Phai == 'Nam'}" src="/images/man.jpg" width="60" height="60" />
+        </td>
+        <td th:text="${nhanvien.Noi_Sinh}"></td>
+        <td th:text="${nhanvien.PhongBan.Ma_Phong}"></td>
+        <td th:text="${nhanvien.Luong}"></td>
+        <td>
+          <a th:href="@{/nhanviens/edit/{id}(id=${nhanvien.ma_NV})}"><i class="fa fa-bars"></i></a>
+          <a th:href="@{/nhanviens/delete/{id}(id=${nhanvien.Ma_NV})}" onclick="return confirm('Are you sure about that?')"><i class="fa fa-trash"></i></a>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 <th:block th:replace="layout::footer"></th:block>

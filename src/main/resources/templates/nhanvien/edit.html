@@ -8,40 +8,36 @@
 <body>
 <th:block th:replace="layout :: header"></th:block>
 <div class="container">
-  <h1>Edit Book</h1>
-  <form th:action="@{/nhanViens/edit/{id}(id=${nhanVien.ma_NV})}" th:object="${nhanVien}" method="post">
-    <input type="hidden" th:field="*{id}">
+  <h1>Edit Nhân Viên</h1>
+  <form th:action="@{/nhanviens/edit/{id}(id=${nhanvien.Ma_NV})}" th:object="${nhanvien}" method="post">
+    <input type="hidden" th:field="*{Ma_NV}">
     <div class="col-6 mb-3">
-      <label class="form-label" for="Ma_NV">Mã Nhân Viên</label>
-      <input class="form-control" type="text" th:field="*{Ma_NV}" id="Ma_NV">
+      <label class="form-label" for="Ten_NV">Tên NV</label>
+      <input type="text" class="form-control bg-white" id="Ten_NV" placeholder="Ten_NV" th:field="*{Ten_NV}">
     </div>
     <div class="col-6 mb-3">
-      <label class="form-label" for="Ten_NV">Tên Nhân Viên</label>
-      <input class="form-control" type="text" th:field="*{Ten_NV}" id="Ten_NV">
+      <label class="form-label" for="Noi_Sinh">Nơi Sinh</label>
+      <input type="text" class="form-control bg-white" id="Noi_Sinh" placeholder="Noi_Sinh" th:field="*{Noi_Sinh}">
     </div>
     <div class="col-6 mb-3">
-      <label class="form-label" for="Phai">Giới tính</label>
-      <input class="form-control" type="text" th:field="*{Phai}" id="Phai">
+      <label class="form-label" for="Phai">Phái</label>
+      <input type="text" class="form-control bg-white" id="Phai" placeholder="Phai" th:field="*{Phai}">
     </div>
     <div class="col-6 mb-3">
-      <label class="form-label" for="Noi_Sinh">Nơi sinh</label>
-      <input class="form-control" type="text" th:field="*{Noi_Sinh}" id="Noi_Sinh">
+      <label class="form-label" for="Luong">Lương</label>
+      <input type="text" class="form-control bg-white" id="Luong" placeholder="Luong" th:field="*{Luong}">
     </div>
     <div class="col-6 mb-3">
       <label class="form-label" for="PhongBan">Phòng Ban</label>
       <select class="form-control" id="PhongBan" name="PhongBan.Ma_Phong">
-        <option value="">-- Danh sách Phòng Ban --</option>
+        <option value="">Danh sách Phòng Ban</option>
         <option th:each="PhongBan: ${PhongBans}" th:value="${PhongBan.Ma_Phong}" th:text="${PhongBan.Ten_Phong}"></option>
       </select>
-    </div>
-    <div class="col-6 mb-3">
-      <label class="form-label" for="Luong">Lương </label>
-      <input class="form-control" type="text" th:field="*{Luong}" id="Luong">
     </div>
     <input type="submit" value="Save">
   </form>
   <br>
-  <a th:href="@{/nhanViens}">Back to list</a>
+  <a th:href="@{/nhanviens}">Back to list</a>
 </div>
 <th:block th:replace="layout :: footer"></th:block>
 </body>

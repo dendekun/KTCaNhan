@@ -11,8 +11,8 @@ import java.util.List;
 public class PhongBanService {
     @Autowired
     private IPhongBanRepository phongBanRepository;
-    public List<PhongBan> getAllPhongBan(){ return phongBanRepository.findAll();}
-    public PhongBan getPhongBanById(String id){return phongBanRepository.findById(id).orElse(null);}
-    public PhongBan savePhongBan(PhongBan phongBan) { return phongBanRepository.save(phongBan);}
-    public void deletePhongBan(String id){ phongBanRepository.deleteById(id);}
+    public List<PhongBan> getAllDepartment(){ return phongBanRepository.findAll();}
+    public PhongBan getDepartmentById(String id){return phongBanRepository.findById(id).orElse(null);}
+    public PhongBan saveDepartment(PhongBan phongBan) { return phongBanRepository.save(phongBan);}
+    public void deleteDepartment(String id){ phongBanRepository.deleteById(id);}
 }
